@@ -5,24 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수학 문제집 설문조사</title>
+    <!-- 일단 css와 js는 따로 파일 만들지 않고 현 html 파일에서 만들어서 완성시킨 후 따로 static파일을 만들어 정리해보겠습니다-->
     <style>
         div {
-          width: 700px;
-          padding: 1px;
-          background-color: rgb(196, 222, 253);
+          width: 40%;
+          padding: 10px;
+          background-color: white;
+          border: 5px solid rgb(196, 222, 253);
           margin: 0;
         }
-        </style>
-        
+
+        h3 {text-align: center;}
+
+        h5 {text-align: center;}
+
+      
+        div.relative {
+                    position: relative;
+                    /* right: 30%; */
+                    left: 30%;
+                    /* border: 3px solid #878a84; */
+                    }
+    </style>
+    
 </head>
 <body>
     <h3>수학 문제집 설문조사</h3>
     <h5>각 문항을 읽고 답변을 클릭해주세요</h5>
 
     <form>
-        <div id=1>
+        <div class="relative">
             <strong>1-1. 원하는 문제집은 초등, 중등, 고등 중 어디에 해당되나요?</strong> <br><br>
-
+            
             <input type="radio" id="element" name="school_register" >
             <label for="element">① 초등</label><br>
             
@@ -34,7 +48,7 @@
             <br>
         </div>
         <br>
-        <div>
+        <div class="relative">
             <strong>1-2. 1-1에서 초등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</strong> <br><br>
         
             <input type="radio" id="ele_grade1" name="element_grade_detail" >
@@ -57,7 +71,7 @@
             <br>
         </div>    
     <br>
-        <div>
+    <div class="relative">
             <strong>1-3. 1-1에서 중등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</strong> <br><br>
         
             <input type="radio" id="mid_grade1" name="middle_grade_detail" >
@@ -71,7 +85,7 @@
             <br>
         </div>
     <br>
-        <div>
+    <div class="relative">
         <strong>1-4. 1-1에서 고등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</strong> <br><br>
 
             <input type="radio" id="high_grade1" name="high_grade_detail" >
@@ -86,7 +100,7 @@
         </div>
     <br>
 
-    <div>
+    <div class="relative">
         <strong>1-5. 1-1에서 고등을 선택한 경우, 문제집 구입 용도는 아래 중 어디에 해당되나요?</strong> <br><br>
 
         <input type="radio" id="scholl_records" name="math_purpose" >
@@ -97,7 +111,7 @@
         <br>
     </div>
     <br>
-    <div>
+    <div class="relative">
         <strong>2. 수학 성적은 상, 중, 하 중에서 어디에 해당되나요?</strong> <br><br>
 
         <input type="radio" id="math_grade_high" name="math_grade" >
@@ -111,7 +125,7 @@
         <br> 
     </div>
     <br>
-    <div>
+    <div class="relative">
         <strong>3. 수학 교과서 출판사는 어디인가요?</strong> <br><br>
 
         <input type="radio" id="genius" name="publisher" >
@@ -128,7 +142,7 @@
         <br>
     </div>
    <br>
-    <div>
+   <div class="relative">
         <strong>4. 구입하고자 하는 수학 문제집이 아래 중 어디에 해당되나요?</strong> <br><br>
 
         <input type="radio" id="concept_description" name="workbook_type" >
@@ -142,8 +156,8 @@
         <br>
     </div>
     <br>
-    <div>
-        <strong>5. 책 내부 디자인에 대해 어느 쪽을 선호하나요?</strong> <br><br>
+    <div class="relative">
+        <strong>5. 책 내부 디자인은 아래 보기 중 어느 쪽을 선호하나요?</strong> <br><br>
 
         <input type="radio" id="illust_and_colorful" name="workbook_design" >
         <label for="illust_and_colorful">① 삽화 많고 컬러풀한</label><br>
@@ -159,7 +173,7 @@
         <br>
     </div>
     <br>
-    <div>
+    <div class="relative">
         <strong>6. 구입하고자 하는 수학 문제집의 용도는 무엇인가요?</strong> <br><br>
 
         <input type="radio" id="previous" name="workbook_use" >
