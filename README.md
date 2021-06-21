@@ -1,10 +1,10 @@
 # learning_math_website_development
  
 
-<ol>
+<ol><h3>
   <li> 🖋️ Contributors: 김수연, 이홍주, 조태익</li>
   <li> 📆 Project period: 2021/06/17 - 2021/06/24</li>
-  <li> 🤝 Coding convention <br>
+ <li> 🤝 Coding convention </h3>
    <details><summary> Rules </summary>
        1. 연산자 앞뒤 공백 <br>
        2. 함수명, 변수명 스네이크 케이스로 작성 <br>
