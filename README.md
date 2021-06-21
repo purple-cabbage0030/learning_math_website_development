@@ -2,7 +2,7 @@
  
 
 <ol><h3>
-  <li> 🖋️ Contributors: 김수연, 이홍주, 조태익</li>
+ <li> 🖋️ Contributors: <a href="https://github.com/metaego">김수연</a>, <a href="https://github.com/purple-cabbage0030">이홍주</a>, <a href="https://github.com/Siho02">조태익</a></li>
   <li> 📆 Project period: 2021/06/17 - 2021/06/24</li>
  <li> 🤝 Coding convention </h3>
    <details><summary> Rules </summary>
