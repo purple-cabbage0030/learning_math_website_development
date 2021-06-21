@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+        
+    </style>
+</head>
+<body style="font-family:'KoPub Batang', serif;">
+    <h1>문제집이 뭐가 조태익?</h1>
+    <br><hr color="grey"><br>
+
+    <form align=right action="login" method="POST">
+        
+        서비스 이용은 로그인 후 가능합니다.<br><br>
+
+        <label>ID:</label>&nbsp;
+        <input type="text" id="user_id" name="user_id"><br>
+
+        <label>PW:</label>&nbsp;
+        <input type="password" id="user_pw" name="user_pw"><br><br>
+
+        <button onclick="login()">log-in</button>
+
+    </form>
+
+    <script>
+        function login(){
+            const xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function (){
+                if (this.readyState == 4 && this.status == 200){
+                    all = JSON.parse(this.responseText);
+                    console.log(all.access_token);
+                    localStorage.setItem("jwt-auth-token", all.access_token);
+                }
+            };
+
+            xhttp.open("POST", "login");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("user_id="+document.getElementById("user_id").value+"&user_pw="+document.getElementById("user_pw").value);
+        }
+        
+    </script>
+    
+</body>
+</html>
