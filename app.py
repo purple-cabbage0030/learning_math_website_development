@@ -12,16 +12,16 @@ app.config.update(
 
 jwt = JWTManager(app)
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/login', methods=['POST'])
+@app.route("/login", methods=["POST"])
 def login_proc():
     user_id = request.form.get("user_id")
     user_pw = request.form.get("user_pw")
 
-    if user_id == member_id and user_pw == member_pw:
+    if user_id == MemberDAO.memid() and user_pw == MemberDAO.memopw():
         return jsonify(
             result = "200",
             access_token = create_access_token(identity = user_id)
@@ -30,6 +30,10 @@ def login_proc():
     else:
         return "존재하지 않는 사용자입니다."
 
+@app.route("/questionlist", methods=["GET"])
+def qslist():
+    dao = QuestionDAO
+    return dao.questall()
 
 if __name__ == '__main__':
     app.run(debug=True, host="127.0.0.1", port="5000")
