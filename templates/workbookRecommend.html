@@ -14,7 +14,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Kirang+Haerang&family=Yeon+Sung&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
-    
+    <!-- 아이콘(font Awesome) 다운 링크-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+    <!--html, css 링크 -->
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+
     <style>
         div {
           width: 45%;
@@ -50,16 +55,37 @@
         }
         div#submit{
             position: relative;
-            margin: 1% auto 10% auto;
+            margin: 0.5% auto 10% auto;
             text-align: center;
             padding: 0;
             background-color: rgb(237, 231, 246);
         }
+        /* .btn {cursor:pointer;}
+        <img src="../app.py" alt="" class="btn" onclick="clickBtn()";/> */
+            
+        .btn{
+            width: 10%;
+            height: 10%;
+            background-color: rgb(237, 231, 246);
+            decoration:none; 
+        }        
     </style>
     
+
+
+    
+
+
+
+
 </head>
 <body>
-    <h1>수학 문제집 설문조사</h1><i class="fas fa-poll-h"></i>
+    <!-- <button type="button"><img src="home.png" alt=""></button> -->
+    <div class = "btn" id="home_icorn" >
+        <button type="button"><i class="fas fa-home fa-4x" onclick="clickBtn()";></i></button>
+    </div>
+    <hr>
+    <h1>수학 문제집 설문조사</h1></i>
     <h2>각 문항을 읽고 보기 문항 중 하나를 선택해주세요 :)</h2>
 
     <form>
@@ -84,7 +110,9 @@
         <!-- 문제1-2번 문항-->
         <div class="relative">
             <br>
-            <b>  1-2. 1-1에서 초등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</b> <br><br>
+            <b>  1-2. 1-1에서 초등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            (1-1에서 초등을 선택하지 않은 경우, 해당없음에 체크해주세요) </b> <br><br>
         
             <input type="radio" id="ele_grade1" name="element_grade_detail" >
             <label for="ele_grade1">① 1학년</label><p>
@@ -102,7 +130,10 @@
             <label for="ele_grade5">⑤ 5학년</label><p>
             
             <input type="radio" id="ele_grade6" name="element_grade_detail" >    
-            <label for="ele_grade6">⑥ 6학년</label><br>
+            <label for="ele_grade6">⑥ 6학년</label><p>
+
+            <input type="radio" id="ele_grade7" name="element_grade_detail" >    
+            <label for="ele_grade7">⑦ 해당없음</label><br>
 
         </div>    
 
@@ -111,7 +142,9 @@
         <!-- 문제1-3번 문항-->
         <div class="relative">
             <br>
-            <b>  1-3. 1-1에서 중등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</b> <br><br>
+            <b>  1-3. 1-1에서 중등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            (1-1에서 중등을 선택하지 않은 경우, 해당없음에 체크해주세요)</b> <br><br>
         
             <input type="radio" id="mid_grade1" name="middle_grade_detail" >
             <label for="mid_grade1">① 1학년</label><p>
@@ -120,8 +153,10 @@
             <label for="mid_grade2">② 2학년</label><p>
             
             <input type="radio" id="mid_grade3" name="middle_grade_detail" >    
-            <label for="mid_grade3">③ 3학년</label><br>
-
+            <label for="mid_grade3">③ 3학년</label><p>
+            
+            <input type="radio" id="mid_grade4" name="middle_grade_detail" >    
+            <label for="mid_grade4">④ 해당없음</label><br>
         </div>
 
         <br>
@@ -129,7 +164,9 @@
         <!-- 문제1-4번 문항-->
         <div class="relative">
             <br>
-            <b>  1-4. 1-1에서 고등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</b> <br><br>
+            <b>  1-4. 1-1에서 고등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            (1-1에서 고등을 선택하지 않은 경우, 해당없음에 체크해주세요)</b> <br><br>
 
             <input type="radio" id="high_grade1" name="high_grade_detail" >
             <label for="high_grade1">① 1학년</label><p>
@@ -138,7 +175,10 @@
             <label for="high_grade2">② 2학년</label><p>
             
             <input type="radio" id="high_grade3" name="high_grade_detail" >    
-            <label for="high_grade3">③ 3학년(N수생 포함)</label><br>
+            <label for="high_grade3">③ 3학년(N수생 포함)</label><p>
+
+            <input type="radio" id="high_grade4" name="high_grade_detail" >    
+            <label for="high_grade4">④ 해당없음</label><br>
         </div>
 
         <br>
@@ -146,14 +186,18 @@
         <!-- 문제1-5번 문항-->
         <div class="relative">
             <br>
-            <b>  1-5. 1-1에서 고등을 선택한 경우, 문제집 구입 용도는 아래 중 어디에 해당되나요?</b> <br><br>
+            <b>  1-5. 1-1에서 고등을 선택한 경우, 문제집 구입 용도는 아래 중 어디에 해당되나요?<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            (1-1에서 고등을 선택하지 않은 경우, 해당없음에 체크해주세요)</b> <br><br>
 
-            <input type="radio" id="scholl_records" name="math_purpose" >
+            <input type="radio" id="school_records" name="math_purpose" >
             <label for="scholl_records">① 내신용</label><p>
             
             <input type="radio" id="sat" name="math_purpose" >   
-            <label for="sat">② 수능용</label><br>
+            <label for="sat">② 수능용</label><p>
 
+            <input type="radio" id="no_records" name="math_purpose" >   
+            <label for="no_records">③ 해당없음</label><br>
         </div>
 
         <br>
@@ -171,7 +215,6 @@
             
             <input type="radio" id="math_grade_low" name="math_grade" >   
             <label for="math_grade_low">③ 하</label><br>
-
         </div>
 
         <br>
@@ -192,7 +235,6 @@
         
             <input type="radio" id="soar_edu" name="publisher" >   
             <label for="soar_edu">④ 비상교육</label><br>
-
         </div>
 
         <br>
@@ -210,7 +252,6 @@
             
             <input type="radio" id="previous_workbook" name="workbook_type" >   
             <label for="previous_workbook">③ 기출 문제집(내신 또는 수능)</label><br>
-
         </div>
 
         <br>
@@ -231,7 +272,6 @@
         
             <input type="radio" id="no_matter" name="workbook_design" >   
             <label for="no_matter">④ 상관없음</label><br>
-
         </div>
 
         <br>
@@ -246,11 +286,12 @@
             
             <input type="radio" id="review" name="workbook_use" >   
             <label for="review">② 복습용</label><br>
-
         </div>
 
+        <!-- 하단 홈으로 가기 혹은 응답 제출 버튼 구현-->
         <br><br>
         <div id="submit">
+            <input type="submit" value="홈으로 가기"> &nbsp;&nbsp;
             <input type="submit" value="설문완료">
         </div>
 
