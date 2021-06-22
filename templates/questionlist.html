@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/question.css')}}">
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+        
+    </style>
+    <title>질문 게시판</title>
+</head>
+<body style="font-family:'KoPub Batang', serif;" onload="javascript:questall()">
+    <h1>질문 게시판</h1>
+    <br><hr color="grey"><br>
+    <div id="qlist"></div>
+
+    <button align="right">글쓰기</button>
+
+    <script>
+    function questall() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                data = this.responseText;
+                data = JSON.parse(data);
+
+                tab = `
+                <table border="1">
+                    <tr><th>질문번호</th><th>제목</th><th>작성자</th></tr>`;
+
+                    let qsid;
+                    let title;
+                    let mname;
+
+                    for(no in data){
+                        qsid = data[no].qsid;
+                        title = data[no].title;
+                        mname = data[no].mname;
+                    tab = tab + `<tr>
+                        <td>${qsid}</td>
+                        <td>${title}</td>
+                        <td>${mname}</td>
+                    </tr>`;
+                    }
+                tab = tab + `</table>`;
+                document.getElementById("qlist").innerHTML = tab;
+            };
+        };
+        xhttp.open("GET", "questionlist");
+        xhttp.send();
+    }
+    </script>
+</body>
+</html>
