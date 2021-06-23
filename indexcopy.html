@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Kirang+Haerang&family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+        h1 {
+            font-size: 50px;
+            text-align: center;
+            margin-top: 3%;
+            font-family: 'Poor story', cursive;
+        }
+        div{
+            font-family: 'Poor story', cursive;
+        }
+        .loginbox{
+            margin-right : 5px;
+            margin-left : 20px;
+            padding-right: 30px;
+            font-family: 'Poor story', cursive;
+        }
+        .button{
+            font-family: 'Poor story', cursive;
+        }
+        .col-50 {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+        height: 100%;
+        }
+    </style>
+</head>
+<body style="font-family:'KoPub Batang', serif;">
+    <table align="center" cellpadding = "0" cellsapcing="0" width= "100%">
+        <tbody>
+            <tr>
+                <td>
+                    <h1>문제집이 뭐가 조태익?</h1>
+                </td>
+                <td class="loginbox">
+                    <form align=right action="login" method="POST">
+        
+                        서비스 이용은 로그인 후 가능합니다.<br><br>
+                
+                        <label>ID:</label>&nbsp;
+                        <input type="text" id="user_id" name="user_id"><br>
+                
+                        <label>PW:</label>&nbsp;
+                        <input type="password" id="user_pw" name="user_pw"><br><br>
+                
+                        <button class="button" onclick="login()">log-in</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr color="grey"><br>
+
+    <div>
+        <div class="col-50">
+            <input type="button" id = "brbutton" value="책 추천" onclick="acyncMovePage('/templates/bookRecommend.html')">
+        </div>
+        <div class="col-50">
+        </div>
+    </div>
+
+    <script>
+        function login(){
+            const xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function (){
+                if (this.readyState == 4 && this.status == 200){
+                    all = JSON.parse(this.responseText);
+                    console.log(all.access_token);
+                    localStorage.setItem("jwt-auth-token", all.access_token);
+                }
+            };
+
+            xhttp.open("POST", "login");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("user_id="+document.getElementById("user_id").value+"&user_pw="+document.getElementById("user_pw").value);
+        }
+
+        function acyncMovePage(url){
+            var ajaxOption = {
+                url : url,
+                async : true,
+                type : "POST",
+                dataType : "html",
+                cache : false
+            };
+            $.ajax(ajaxOption).done(function(data){
+                $('brbutton').children().remove();
+                $('brbutton').html(data);
+            });
+            
+        };
+        
+    </script>
+    
+</body>
+</html>
