@@ -1,9 +1,6 @@
 <!-- 일단 css와 js는 따로 파일 만들지 않고 현 html 파일에서 만들어서 완성시킨 후 따로 static파일을 만들어 정리해보겠습니다-->
 <!-- 각 설문 문항은 div 태그를 사용하여 코드를 구분하였습니다 -->
-<!-- -->
-<!-- ++[0623 수정 추가]++ 
-    제출 버튼 주위의 색상 테두리가 있는 현상을 없애기 위해 코드 추가 및 수정하였습니다 
-    ctrl+F로 '수정'키워드 찾으신 후 해당 코드 반영 부탁드립니다-->
+<!-- 속성값이 1줄 이하인 경우 줄을 구분하지 않고 한 줄로 작성하였습니다-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,23 +15,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Kirang+Haerang&family=Yeon+Sung&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
-    <!-- 아이콘 링크 추가(수정)-->
-    <!-- 아이콘 링크-->
-    <script src="https://kit.fontawesome.com/9b205acb71.js" crossorigin="anonymous"></script>
+    <style>
+        div {
+          width: 45%;
+          padding: 10px;
+          background-color: rgb(244, 236, 247);
+          /* background-color: rgb(244, 246, 246); */
+          /* border: 5px solid rgb(196, 222, 253); */
+          border-radius: 10px;  /*상자 끝 둥글게 */
+          font-family: 'Poor Story', cursive;
+        }
 
-    <link rel="stylesheet" href="./static/css/workbook_survay.css">
+        h1 {
+            font-size: 50px;
+            text-align: center;
+            margin-top: 3%;
+            font-family: 'Kirang Haerang', cursive;
+        }
 
+        h2 {
+            font-size: 25px;
+            font-weight: 100 ;
+            text-align: center;
+            /* font-family: 'Dokdo', cursive; */
+            font-family: 'Yeon Sung', cursive;
+        }
+
+        /* 수학 문제집 form 설정값 정의 */
+        .relative {
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: 'Yeon Sung', cursive;;
+        } 
+    </style>
         
 </head>
 <body>
-    <!-- header와 homecorn 추가(수정)-->
-    <header>
-        <span class="home_icorn">
-            <i class="fas fa-home" style="font-size:400%; margin: 1%; color:white" onclick="location.href='./indexcopy.html';"></i>
-            <!-- <i class="fas fa-home" style="font-size:400%; margin: 1%;" onclick="main();"></i> -->
-        </span>
-    </header>
-        
     <h1>수학 문제집 설문조사</h1>
     <h2>각 문항을 읽고 답변을 클릭해주세요</h2>
 
@@ -136,9 +153,8 @@
             <label for="high">③ 고등</label><br><br>
             
         </div>
-        <div class="relative" id="sub_btn" style="width:35px; relative">  <!-- id="sub_btn" (수정)-->
-            <input type = "button" value="제출" onclick="school_pick(this.form)"
-            style="font-family: Yeon Sung";>
+        <div class="relative"style="width:35px; relative">
+            <input type = "button" value="제출" class="relative" onclick="school_pick(this.form)">
         </div>
         
         <br><br><br>
@@ -205,9 +221,8 @@
             <label for="sat">② 수능용</label><br><br>
             <br>
         </div>
-        <div class="relative" id="sub_btn" style="width:35px; relative">  <!-- id="sub_btn" (수정)-->
-            <input type = "button" value="제출" onclick="grade_pick(this.form)"
-            style="font-family: Yeon Sung";>
+        <div class="relative"style="width:35px; relative">
+            <input type = "button" value="제출" class="relative" onclick="grade_pick(this.form)">
         </div><br><br>
     </form>
 
@@ -282,47 +297,9 @@
             <label for="review">② 복습용</label><br><br>
             <br>
         </div>
-        <div class="relative" id="sub_btn" style="width:35px; relative">  <!-- id="sub_btn" (수정)-->
-            <input type = "button" value="제출" onclick="pick_options(this.form)"
-            style="font-family: Yeon Sung";>
+        <div class="relative"style="width:35px; relative">
+            <input type = "button" value="제출" class="relative" onclick="pick_options(this.form)">
         </div>
     </form>
-<!-- Code injected by live-server -->
-<script type="text/javascript">
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script></body>
+</body>
 </html>

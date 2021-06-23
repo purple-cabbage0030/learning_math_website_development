@@ -1,0 +1,54 @@
+@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+
+header {
+  background-color: #3f3f48;
+  padding: 5px;
+}
+
+div {
+  width: 45%;
+  padding: 10px;
+  border-radius: 10px; /*상자 끝 둥글게 */
+  font-family: "Poor Story", cursive;
+  background-color: white; /* white로 변경(수정)*/
+}
+
+/* 제출버튼 div에 id명 sub_btn 추가 후 아래 속성 추가(수정)*/
+#sub_btn {
+  background-color: #dbcfc8;
+}
+h1 {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 3%;
+  font-family: "KoPub Batang", serif;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 100;
+  text-align: center;
+  font-family: "Poor Story", cursive;
+}
+
+/*body 속성 추가(수정)*/
+body {
+  background-color: #dbcfc8;
+}
+
+/* 수학 문제집 form 설정값 정의 */
+.relative {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+.relativebutton {
+  width: 35px;
+  font-family: "KoPub Batang", serif;
+}
+
+/*home icorn 속성 추가(수정)*/
+span.home_icorn {
+  background-color: #3f3f48;
+  cursor: pointer;
+}
