@@ -4,54 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/question.css')}}">
-    <style>
-        @import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
-        
-    </style>
-    <title>질문 게시판</title>
-</head>
-<body style="font-family:'KoPub Batang', serif;" onload="javascript:questall()">
-    <h1>질문 게시판</h1>
-    <br><hr color="grey"><br>
-    <div id="qlist"></div>
-
-    <button align="right">글쓰기</button>
-
+    <title>글 작성하기</title>
     <script>
-    function questall() {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                data = this.responseText;
-                data = JSON.parse(data);
+        function move(url){
+            location.href=url;
+        }
 
-                tab = `
-                <table border="1">
-                    <tr><th>질문번호</th><th>제목</th><th>작성자</th></tr>`;
-
-                    let qsid;
-                    let title;
-                    let mname;
-
-                    for(no in data){
-                        qsid = data[no].qsid;
-                        title = data[no].title;
-                        mname = data[no].mname;
-                    tab = tab + `<tr>
-                        <td>${qsid}</td>
-                        <td>${title}</td>
-                        <td>${mname}</td>
-                    </tr>`;
-                    }
-                tab = tab + `</table>`;
-                document.getElementById("qlist").innerHTML = tab;
-            };
-        };
-        xhttp.open("GET", "questionlist");
-        xhttp.send();
-    }
+        function boardWriteCheck(){
+            var form=document.BoardWriteForm;
+            return true;
+        }
     </script>
+</head>
+<body>
+    <table summary="글 작성 테이블">
+        <form name="BoardWriteForm" method="post" action="#" onsubmit="return boardWriteCheck();">
+            <colgroup>
+                <col width="20%">
+                <col width="80%">
+            </colgroup>
+        
+            <table summary="테이블 구성">
+                <caption>질문 작성하기</caption>
+                <tr>
+                    <td><select name="학년" id="grade">
+                    <option value="초1">초1</option>
+                    <option value="초2">초2</option>
+                    <option value="초3">초3</option>
+                    <option value="초4">초4</option>
+                    <option value="초5">초5</option>
+                    <option value="초6">초6</option>
+                    <option value="중1">중1</option>
+                    <option value="중2">중2</option>
+                    <option value="중3">중3</option>
+                    <option value="고1">고1</option>
+                    <option value="고2">고2</option>
+                    <option value="고3">고3</option>
+                    </select></td>
+
+                    <td><input type="text" name="title" id="title" placeholder="제목" size="100"></td>
+            
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea name="content" id="content" cols="100" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div align="right">
+                            <input type="submit" value="등록하기" onclick="">
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </table>
 </body>
 </html>
