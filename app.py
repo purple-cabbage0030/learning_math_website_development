@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 app.config.update(
     DEBUG = True,
-    JWT_SECRET_KEY = "############"
+    JWT_SECRET_KEY = "mymath"
 )
 
 jwt = JWTManager(app)
@@ -19,9 +19,9 @@ def index():
 @app.route("/login", methods=["POST"])
 def login_proc():
     user_id = request.form.get("user_id")
-    user_pw = request.form.get("user_pw")
+    dao = MemberDAO()
 
-    if user_id == MemberDAO.memid() and user_pw == MemberDAO.memopw():
+    if user_id == dao.memid(request.form.get("user_pw")):
         return jsonify(
             result = "200",
             access_token = create_access_token(identity = user_id)
@@ -30,10 +30,32 @@ def login_proc():
     else:
         return "존재하지 않는 사용자입니다."
 
-@app.route("/questionlist", methods=["GET"])
+@app.route("/qlist", methods=["GET"])
 def qslist():
-    dao = QuestionDAO
-    return dao.questall()
+    dao = QuestionDAO()
+    data = dao.questall()
+    return render_template("qlist.html", data=data)
+
+@app.route("/qsid1", methods=["GET"])
+def qsno1():
+    qsid = 1
+    dao = QuestionDAO()
+    data = dao.questone(qsid)
+    return render_template("qsid1.html", data=data)
+
+@app.route("/qsid2", methods=["GET"])
+def qsno2():
+    qsid = 2
+    dao = QuestionDAO()
+    data = dao.questone(qsid)
+    return render_template("qsid2.html", data=data)
+
+@app.route("/insertquestion", methods=["GET"])
+def insertqs():
+    pass
+    dao = QuestionDAO()
+    dto = QuestionDTO(request.form.get("title"), request.form.get("title"), request.form.get("title"),)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="127.0.0.1", port="5000")
