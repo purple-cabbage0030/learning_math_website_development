@@ -1,6 +1,10 @@
 <!-- 일단 css와 js는 따로 파일 만들지 않고 현 html 파일에서 만들어서 완성시킨 후 따로 static파일을 만들어 정리해보겠습니다-->
 <!-- 각 설문 문항은 div 태그를 사용하여 코드를 구분하였습니다 -->
 
+<!-- ++[0623 수정 추가]++ 
+    제출 버튼 주위의 색상 테두리가 있는 현상을 없애기 위해 코드 추가 및 수정하였습니다 
+    ctrl+F로 '수정'키워드 찾으신 후 해당 코드 반영 부탁드립니다-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,27 +12,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수학 문제집 설문조사</title>
-    
+
     <!-- 상업적 사용 가능한 구글 폰트 다운받는 링크-->
     <link href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Kirang+Haerang&family=Yeon+Sung&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
-    <!-- 아이콘(font Awesome) 다운 링크-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-
-    <!--html, css 링크 -->
-    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+    <!-- 아이콘 링크 추가(수정)-->
+    <!-- 아이콘 링크-->
+    <script src="https://kit.fontawesome.com/9b205acb71.js" crossorigin="anonymous"></script>
 
     <style>
+        /*header 추가(수정)*/
+        header {
+            background-color: black;
+            padding: 5px;
+        }
+
         div {
           width: 45%;
           padding: 10px;
-          background-color: white;
           border-radius: 10px;  /*상자 끝 둥글게 */
           font-family: 'Poor Story', cursive;
+          background-color: white; /* white로 변경(수정)*/
         }
 
+        /* 제출버튼 div에 id명 sub_btn 추가 후 아래 속성 추가(수정)*/
+        #sub_btn{
+            background-color: rgb(244, 236, 247);
+        }
         h1 {
             font-size: 50px;
             text-align: center;
@@ -43,8 +55,9 @@
             font-family: 'Yeon Sung', cursive;
         }
 
-        body{ 
-            background-color: rgb(237, 231, 246);
+        /*body 속성 추가(수정)*/
+        body{
+            background-color: rgb(244, 236, 247);
         }
 
         /* 수학 문제집 form 설정값 정의 */
@@ -52,249 +65,319 @@
                 position: relative;
                 margin-left: auto;
                 margin-right: auto;
+        } 
+        .relativebutton{
+                width : 35px;
+                font-family: 'Yeon Sung', cursive;
         }
-        div#submit{
-            position: relative;
-            margin: 0.5% auto 10% auto;
-            text-align: center;
-            padding: 0;
-            background-color: rgb(237, 231, 246);
-        }
-        /* .btn {cursor:pointer;}
-        <img src="../app.py" alt="" class="btn" onclick="clickBtn()";/> */
+
+        /*home icorn 속성 추가(수정)*/
+        span.home_icorn{
+            background-color: black;
+            cursor:pointer;
+            font-family: 'Kirang Haerang', cursive;
             
-        .btn{
-            width: 10%;
-            height: 10%;
-            background-color: rgb(237, 231, 246);
-            decoration:none; 
-        }        
+        }
     </style>
-    
-
-
-    
-
-
-
-
+        
 </head>
 <body>
-    <!-- <button type="button"><img src="home.png" alt=""></button> -->
-    <div class = "btn" id="home_icorn" >
-        <button type="button"><i class="fas fa-home fa-4x" onclick="clickBtn()";></i></button>
-    </div>
-    <hr>
-    <h1>수학 문제집 설문조사</h1></i>
-    <h2>각 문항을 읽고 보기 문항 중 하나를 선택해주세요 :)</h2>
+    <!-- header와 homecorn 추가(수정)-->
+    <header>
+        <span class="home_icorn">
+            <i class="fas fa-home" style="font-size:400%; margin: 1%; color:white" onclick="location.href='./index.html';"></i>
+            <!-- <i class="fas fa-home" style="font-size:400%; margin: 1%;" onclick="main();"></i> -->
+        </span>
+    </header>
+        
+    <h1>수학 문제집 설문조사</h1>
+    <h2>각 문항을 읽고 답변을 클릭해주세요</h2>
+
+    <script>
+        function school_pick(form) {
+            for (var i = 0; i < form.school_register.length; i++){
+                if(form.school_register[i].checked){
+                    school = form.school_register[i].value;
+                    break;
+                }
+                else{
+                    school = ""
+                }
+            }
+            if (school == ""){
+                alert("학적 선택을 해주세요!!")
+            }
+            return school;
+        };
+        
+        function grade_pick(form){            
+            if (school == "초"){
+                exam = "내신용"
+                for (var i = 0; i < form.element_grade_detail.length; i++){
+                    if(form.element_grade_detail[i].checked){
+                        grade = form.element_grade_detail[i].value;
+                        break;
+                    }
+                }                
+            } else if (school == "중"){
+                exam = "내신용"
+                for (var i = 0; i < form.middle_grade_detail.length; i++){
+                    if(form.middle_grade_detail[i].checked){
+                        grade = form.middle_grade_detail[i].value;
+                    }
+                }
+            } else {
+                for (var i = 0; i < form.high_grade_detail.length; i++){
+                    if(form.high_grade_detail[i].checked){
+                        grade = form.high_grade_detail[i].value
+                    }
+                }
+                for (var i = 0; i < form.math_purpose.length; i++){
+                    if(form.math_purpose[i].checked){
+                        exam = form.math_purpose[i].value
+                    }
+                }
+                
+            }
+            
+            return grade, exam;
+        };
+
+        function pick_options(form){
+            for (var i = 0; i < form.math_grade.length; i++){
+                if(form.math_grade[i].checked){
+                    m_grade = form.math_grade[i].value;
+                }
+            }
+            for (var i = 0; i < form.publisher.length; i++){
+                if(form.publisher[i].checked){
+                    b_publisher = form.publisher[i].value;
+                }
+            }
+            for (var i = 0; i < form.workbook_type.length; i++){
+                if(form.workbook_type[i].checked){
+                    b_type = form.workbook_type[i].value;
+                }
+            }
+            for (var i = 0; i < form.workbook_design.length; i++){
+                if(form.workbook_design[i].checked){
+                    b_design = form.workbook_design[i].value;
+                }
+            }
+            for (var i = 0; i < form.workbook_use.length; i++){
+                if(form.workbook_use[i].checked){
+                    b_use = form.workbook_use[i].value;
+                }
+            }
+            return m_grade, b_publisher, b_type, b_design, b_use;
+            
+        }   
+
+
+    </script>
+
+    <form id="form1">
+        <div class="relative">
+            <strong>1-1. 원하는 문제집은 초등, 중등, 고등 중 어디에 해당되나요? </strong> 
+            <br><br>
+
+            <input type="radio" id="element" name="school_register" value="초">
+            <label for="element">① 초등</label><br>
+            
+            <input type="radio" id="middle" name="school_register" value="중">   
+            <label for="middle">② 중등</label><br>
+            
+            <input type="radio" id="high" name="school_register" value="고">    
+            <label for="high">③ 고등</label><br><br>
+            
+        </div>
+        <div class="relative" id="sub_btn" style="width:35px; relative">  <!-- id="sub_btn" (수정)-->
+            <input type = "button" value="제출" onclick="school_pick(this.form)"
+            style="font-family: Yeon Sung";>
+        </div>
+        
+        <br><br><br>
+    </form>
 
     <form>
-        <!-- 문제1-1번 문항-->
         <div class="relative">
-            <br>
-            <b>  1-1. 원하는 문제집은 초등, 중등, 고등 중 어디에 해당되나요?</b> <br><br>
-            
-            <input type="radio" id="element" name="school_register">
-            <label for="element">① 초등</label><p>
-            
-            <input type="radio" id="middle" name="school_register" >   
-            <label for="middle">② 중등</label><p>
-            
-            <input type="radio" id="high" name="school_register" >    
-            <label for="high">③ 고등</label><br>
-            
-        </div>
-
-        <br>
-
-        <!-- 문제1-2번 문항-->
-        <div class="relative">
-            <br>
-            <b>  1-2. 1-1에서 초등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            (1-1에서 초등을 선택하지 않은 경우, 해당없음에 체크해주세요) </b> <br><br>
+            <strong>1-2. 1-1에서 초등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</strong> <br><br>
         
-            <input type="radio" id="ele_grade1" name="element_grade_detail" >
-            <label for="ele_grade1">① 1학년</label><p>
+            <input type="radio" id="ele_grade1" name="element_grade_detail" value="1">
+            <label for="ele_grade1">① 1학년</label><br>
                
-            <input type="radio" id="ele_grade2" name="element_grade_detail" >   
-            <label for="ele_grade2">② 2학년</label><p>
+            <input type="radio" id="ele_grade2" name="element_grade_detail" value="2">   
+            <label for="ele_grade2">② 2학년</label><br>
              
-            <input type="radio" id="ele_grade3" name="element_grade_detail" >    
-            <label for="ele_grade3">③ 3학년</label><p>
+            <input type="radio" id="ele_grade3" name="element_grade_detail" value="3">    
+            <label for="ele_grade3">③ 3학년</label><br>
         
-            <input type="radio" id="ele_grade4" name="element_grade_detail" >    
-            <label for="ele_grade4">④ 4학년</label><p>
+            <input type="radio" id="ele_grade4" name="element_grade_detail" value="4">    
+            <label for="ele_grade4">④ 4학년</label><br>
         
-            <input type="radio" id="ele_grade5" name="element_grade_detail" >    
-            <label for="ele_grade5">⑤ 5학년</label><p>
+            <input type="radio" id="ele_grade5" name="element_grade_detail" value="5">    
+            <label for="ele_grade5">⑤ 5학년</label><br>
             
-            <input type="radio" id="ele_grade6" name="element_grade_detail" >    
-            <label for="ele_grade6">⑥ 6학년</label><p>
-
-            <input type="radio" id="ele_grade7" name="element_grade_detail" >    
-            <label for="ele_grade7">⑦ 해당없음</label><br>
-
+            <input type="radio" id="ele_grade6" name="element_grade_detail" value="6">    
+            <label for="ele_grade6">⑥ 6학년</label><br><br>
         </div>    
-
         <br>
-
-        <!-- 문제1-3번 문항-->
         <div class="relative">
-            <br>
-            <b>  1-3. 1-1에서 중등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            (1-1에서 중등을 선택하지 않은 경우, 해당없음에 체크해주세요)</b> <br><br>
+            <strong>1-3. 1-1에서 중등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</strong> <br><br>
         
-            <input type="radio" id="mid_grade1" name="middle_grade_detail" >
-            <label for="mid_grade1">① 1학년</label><p>
+            <input type="radio" id="mid_grade1" name="middle_grade_detail" value="1" >
+            <label for="mid_grade1">① 1학년</label><br>
             
-            <input type="radio" id="mid_grade2" name="middle_grade_detail" >   
-            <label for="mid_grade2">② 2학년</label><p>
+            <input type="radio" id="mid_grade2" name="middle_grade_detail" value="2">   
+            <label for="mid_grade2">② 2학년</label><br>
             
-            <input type="radio" id="mid_grade3" name="middle_grade_detail" >    
-            <label for="mid_grade3">③ 3학년</label><p>
-            
-            <input type="radio" id="mid_grade4" name="middle_grade_detail" >    
-            <label for="mid_grade4">④ 해당없음</label><br>
-        </div>
-
-        <br>
-
-        <!-- 문제1-4번 문항-->
-        <div class="relative">
+            <input type="radio" id="mid_grade3" name="middle_grade_detail" value="3">    
+            <label for="mid_grade3">③ 3학년</label><br><br>
             <br>
-            <b>  1-4. 1-1에서 고등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            (1-1에서 고등을 선택하지 않은 경우, 해당없음에 체크해주세요)</b> <br><br>
-
-            <input type="radio" id="high_grade1" name="high_grade_detail" >
-            <label for="high_grade1">① 1학년</label><p>
-            
-            <input type="radio" id="high_grade2" name="high_grade_detail" >   
-            <label for="high_grade2">② 2학년</label><p>
-            
-            <input type="radio" id="high_grade3" name="high_grade_detail" >    
-            <label for="high_grade3">③ 3학년(N수생 포함)</label><p>
-
-            <input type="radio" id="high_grade4" name="high_grade_detail" >    
-            <label for="high_grade4">④ 해당없음</label><br>
         </div>
-
         <br>
-
-        <!-- 문제1-5번 문항-->
         <div class="relative">
+        <strong>1-4. 1-1에서 고등을 선택한 경우, 원하는 문제집의 학년은 다음 중 어디에 해당되나요?</strong> <br><br>
+
+            <input type="radio" id="high_grade1" name="high_grade_detail" value="1">
+            <label for="high_grade1">① 1학년</label><br>
+               
+            <input type="radio" id="high_grade2" name="high_grade_detail" value="2">   
+            <label for="high_grade2">② 2학년</label><br>
+             
+            <input type="radio" id="high_grade3" name="high_grade_detail" value="3">    
+            <label for="high_grade3">③ 3학년(N수생 포함)</label><br><br>
             <br>
-            <b>  1-5. 1-1에서 고등을 선택한 경우, 문제집 구입 용도는 아래 중 어디에 해당되나요?<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            (1-1에서 고등을 선택하지 않은 경우, 해당없음에 체크해주세요)</b> <br><br>
-
-            <input type="radio" id="school_records" name="math_purpose" >
-            <label for="scholl_records">① 내신용</label><p>
-            
-            <input type="radio" id="sat" name="math_purpose" >   
-            <label for="sat">② 수능용</label><p>
-
-            <input type="radio" id="no_records" name="math_purpose" >   
-            <label for="no_records">③ 해당없음</label><br>
         </div>
-
         <br>
-
-        <!-- 문제2번 문항-->
         <div class="relative">
-            <br>
-            <b>  2. 수학 성적은 상, 중, 하 중에서 어디에 해당되나요?</b> <br><br>
+            <strong>1-5. 1-1에서 고등을 선택한 경우, 문제집 구입 용도는 아래 중 어디에 해당되나요?</strong> <br><br>
 
-            <input type="radio" id="math_grade_high" name="math_grade" >
-            <label for="math_grade_high">① 상</label><p>
+            <input type="radio" id="scholl_records" name="math_purpose" value="내신용">
+            <label for="scholl_records">① 내신용</label><br>
             
-            <input type="radio" id="math_grade_middle" name="math_grade" >   
-            <label for="math_grade_middle">② 중</label><p>
-            
-            <input type="radio" id="math_grade_low" name="math_grade" >   
-            <label for="math_grade_low">③ 하</label><br>
+            <input type="radio" id="sat" name="math_purpose" value="수능용">   
+            <label for="sat">② 수능용</label><br><br>
+            <br>
         </div>
+        <div class="relative" id="sub_btn" style="width:35px; relative">  <!-- id="sub_btn" (수정)-->
+            <input type = "button" value="제출" onclick="grade_pick(this.form)"
+            style="font-family: Yeon Sung";>
+        </div><br><br>
+    </form>
 
-        <br>
-
-        <!-- 문제3번 문항-->
+    <form>
         <div class="relative">
-            <br>
-            <b>  3. 수학 교과서 출판사는 어디인가요?</b> <br><br>
+            <strong>2. 수학 성적은 상, 중, 하 중에서 어디에 해당되나요?</strong> <br><br>
 
-            <input type="radio" id="genius" name="publisher" >
-            <label for="genius">① 천재교육</label><p>
+            <input type="radio" id="math_grade_high" name="math_grade" value="상">
+            <label for="math_grade_high">① 상</label><br>
             
-            <input type="radio" id="stepping_stone" name="publisher" >   
-            <label for="stepping_stone">② 디딤돌</label><p>
+            <input type="radio" id="math_grade_middle" name="math_grade" value="중">   
+            <label for="math_grade_middle">② 중</label><br>
             
-            <input type="radio" id="shinsago" name="publisher" >   
-            <label for="shinsago">③ 신사고</label><p>
+            <input type="radio" id="math_grade_low" name="math_grade" value="하">   
+            <label for="math_grade_low">③ 하</label><br><br>
+            <br>
+        </div>
+        <br>
+        <div class="relative">
+            <strong>3. 수학 교과서 출판사는 어디인가요?</strong> <br><br>
+
+            <input type="radio" id="genius" name="publisher" value="천재교육">
+            <label for="genius">① 천재교육</label><br>
+            
+            <input type="radio" id="stepping_stone" name="publisher" value="디딤돌">   
+            <label for="stepping_stone">② 디딤돌</label><br>
+            
+            <input type="radio" id="shinsago" name="publisher" value="신사고">   
+            <label for="shinsago">③ 신사고</label><br>
         
-            <input type="radio" id="soar_edu" name="publisher" >   
-            <label for="soar_edu">④ 비상교육</label><br>
-        </div>
-
-        <br>
-
-        <!-- 문제4번 문항-->
-       <div class="relative">
-           <br>
-            <b>  4. 구입하고자 하는 수학 문제집이 아래 중 어디에 해당되나요?</b> <br><br>
-
-            <input type="radio" id="concept_description" name="workbook_type" >
-            <label for="concept_description">① 개념서(이론+문제)</label><p>
-            
-            <input type="radio" id="self_teaching_book" name="workbook_type" >   
-            <label for="self_teaching_book">② 자습서(문제만)</label><p>
-            
-            <input type="radio" id="previous_workbook" name="workbook_type" >   
-            <label for="previous_workbook">③ 기출 문제집(내신 또는 수능)</label><br>
-        </div>
-
-        <br>
-
-        <!-- 문제5번 문항-->
-        <div class="relative">
+            <input type="radio" id="soar_edu" name="publisher" value="비상교육">   
+            <label for="soar_edu">④ 비상교육</label><br><br>
             <br>
-            <b>  5. 책 내부 디자인은 아래 보기 중 어느 쪽을 선호하나요?</b> <br><br>
+        </div>
+        <br>
+        <div class="relative">
+            <strong>4. 구입하고자 하는 수학 문제집이 아래 중 어디에 해당되나요?</strong> <br><br>
 
-            <input type="radio" id="illust_and_colorful" name="workbook_design" >
-            <label for="illust_and_colorful">① 삽화 많고 컬러풀한</label><p>
+            <input type="radio" id="concept_description" name="workbook_type" value="개념서">
+            <label for="concept_description">① 개념서(이론+문제)</label><br>
             
-            <input type="radio" id="less_illust_and_colorful" name="workbook_design" >   
-            <label for="less_illust_and_colorful">② 삽화 적고 컬러풀한</label><p>
+            <input type="radio" id="self_teaching_book" name="workbook_type" value="자습서">   
+            <label for="self_teaching_book">② 자습서(문제만)</label><br>
             
-            <input type="radio" id="black_and_white" name="workbook_design" >   
-            <label for="black_and_white">③ 단색의(흑백의)</label><p>
+            <input type="radio" id="previous_workbook" name="workbook_type" value="기출문제집">   
+            <label for="previous_workbook">③ 기출 문제집(내신 또는 수능)</label><br><br>
+            <br>
+        </div>
+        <br>
+        <div class="relative">
+            <strong>5. 책 내부 디자인에 대해 어느 쪽을 선호하나요?</strong> <br><br>
+
+            <input type="radio" id="illust_and_colorful" name="workbook_design" value="컬러풀">
+            <label for="illust_and_colorful">① 컬러풀한</label><br>
+            
+            <input type="radio" id="less_illust_and_colorful" name="workbook_design" value="단색">   
+            <label for="less_illust_and_colorful">② 단색의(흑백의)</label><br>
+            
+            <input type="radio" id="black_and_white" name="workbook_design" value="상관없음">   
+            <label for="black_and_white">③ 상관없음</label><br>
         
-            <input type="radio" id="no_matter" name="workbook_design" >   
-            <label for="no_matter">④ 상관없음</label><br>
-        </div>
-
-        <br>
-
-        <!-- 문제6번 문항-->
-        <div class="relative">
             <br>
-            <b>  6. 구입하고자 하는 수학 문제집의 용도는 무엇인가요?</b> <br><br>
+        </div>
+        <br>
+        <div class="relative">
+            <strong>6. 구입하고자 하는 수학 문제집의 용도는 무엇인가요?</strong> <br><br>
 
-            <input type="radio" id="previous" name="workbook_use" >
-            <label for="previous">① 선행학습용</label><p>
+            <input type="radio" id="previous" name="workbook_use" value="선행">
+            <label for="previous">① 선행학습용</label><br>
             
-            <input type="radio" id="review" name="workbook_use" >   
-            <label for="review">② 복습용</label><br>
+            <input type="radio" id="review" name="workbook_use" value="복습">   
+            <label for="review">② 복습용</label><br><br>
+            <br>
         </div>
-
-        <!-- 하단 홈으로 가기 혹은 응답 제출 버튼 구현-->
-        <br><br>
-        <div id="submit">
-            <input type="submit" value="홈으로 가기"> &nbsp;&nbsp;
-            <input type="submit" value="설문완료">
+        <div class="relative" id="sub_btn" style="width:35px; relative">  <!-- id="sub_btn" (수정)-->
+            <input type = "button" value="제출" onclick="pick_options(this.form)"
+            style="font-family: Yeon Sung";>
         </div>
-
-</form>
-</body>
+    </form>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
 </html>
