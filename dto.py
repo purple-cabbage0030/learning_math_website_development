@@ -31,14 +31,14 @@ class MemberDTO:
         self.mpw = newmpw
 
     def getBirth(self):
-        return self.birth
+        return self.birth_date
     
-    def setBirth(self, newbirth):
-        self.birth = newbirth
+    def setBirth(self, newbirth_date):
+        self.birth_date = newbirth_date
 
 class QuestionDTO:
-    def __init__(self, newqsid, newtitle, newcontent, memno, newgrade):
-        self.qsid = newqsid
+    def __init__(self, newtitle, newcontent, memno, newgrade):
+        # self.qsid = newqsid
         self.title = newtitle
         self.content = newcontent
         self.memno = memno
