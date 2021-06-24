@@ -52,10 +52,16 @@ def qsno2():
 
 @app.route("/insertquestion", methods=["GET"])
 def insertqs():
-    pass
-    dao = QuestionDAO()
-    dto = QuestionDTO(request.form.get("title"), request.form.get("title"), request.form.get("title"),)
+    return render_template("insertquestion.html")
 
+@app.route("/insert", methods=["POST"])
+def insert():
+    dao = QuestionDAO()
+    dto1 = MemberDTO(None, None, request.form.get("mid"), None, None)
+    dto = QuestionDTO(request.form.get("title"), request.form.get("content"), request.form.get("memno"), request.form.get("grade"))
+    dao.questinsert(dto1, dto)
+    return render_template("insert.html")
+    
 
 if __name__ == '__main__':
     app.run(debug=True, host="127.0.0.1", port="5000")
