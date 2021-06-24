@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
     <style>
         @import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
 
@@ -31,9 +31,6 @@
 
 <body style="font-family:'KoPub Batang', serif;">
 
-    <!-- <input type="text" value='{{data}}' id="dataView"> -->
-
-
     <h1>질문 게시판</h1>
     <br>
     <hr color="grey"><br>
@@ -46,7 +43,6 @@
         let data = '{{data}}';
         let replacedata = data.replace(/\&#34;/g, '\"');
         jdata = JSON.parse(replacedata);
-        // alert(typeof(jdata));
 
         tab = `
                 <table border="1">
