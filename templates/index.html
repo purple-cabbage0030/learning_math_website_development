@@ -5,17 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문제집이 뭐가 조태익?</title>
-
-    
     <link rel="stylesheet" href="../static/css/index.css">
-
 </head>
 
 <body style="font-family:'KoPub Batang', serif;">
     <header>
-
-        <table align="center" cellpadding="0" cellsapcing="0" width= "100%">
-
+        <table align="center" cellpadding = "0" cellsapcing="0" width= "100%">
             <tbody>
                 <tr>
                     <td>
@@ -23,28 +18,26 @@
                     </td>
                     <td class="loginbox">
 
-                        <!--6/23 추가-->
                         <div id="loginView" style="display:block;">
                             서비스 이용은 로그인 후 가능합니다.<br><br>
                             
-                            <label>ID :&nbsp;&nbsp;</label>&nbsp;
+                            <label>ID :&nbsp;</label>&nbsp;
                             <input type="text" id="user_id" name="user_id"><br>
                     
-                            <label>PW :</label>&nbsp;
-
+                            <label>PW:</label>&nbsp;
                             <input type="password" id="user_pw" name="user_pw"><br><br>
                     
                             <button class="button" onclick="login2()">log-in</button>
                         </div>
 
-    
                         <span id="loginboxchild"></span>
+
                     </td>
                 </tr>
             </tbody>
         </table>
     </header>
-    
+
     <nav>
         <table class=nav >
             <a href="booksurvey" style="text-decoration: none; color: white;">
@@ -67,13 +60,13 @@
                 <div style="overflow: hidden;"> 
                     <div class="container">
                         <div class="inner">
-                            <img src="../images/블랙라벨수학상.jpg">
+                            <img src="../images/blacklabel.jpg">
                         </div>
                         <div class="inner">
-                            <img src="../images/쎈고등수학_상.jpg">
+                            <img src="../images/ssen.jpg">
                         </div>
                         <div class="inner">
-                            <img src="../images/자이스토리고3수1.jpg">
+                            <img src="../images/xistory.jpg">
                         </div>
                     </div>
                 </div>
@@ -92,14 +85,6 @@
     </div>
     <br>
 
-    <!-- <div>
-        <div class="col-50">
-            <input type="button" id="brbutton" value="책 추천" onclick="acyncMovePage('/templates/bookRecommend.html')">
-        </div>
-        <div class="col-50">
-        </div>
-    </div> -->
-
 
     <script>
         /*책 추천 슬라이드 버튼 구현*/
@@ -114,25 +99,22 @@
         });
 
 
-
-        //  6/23 추가
-
         function login2(){
-            const xhttp=new XMLHttpRequest();
+            const xhttp = new XMLHttpRequest();
 
-            xhttp.onreadystatechange=function (){
+            xhttp.onreadystatechange = function (){
 
                 if (this.readyState == 4 && this.status == 200){
                     console.log("=======");
 
-                    all=JSON.parse(this.responseText);
+                    all = JSON.parse(this.responseText);
                     console.log(all.access_token);
                     localStorage.setItem("jwt-auth-token", all.access_token);
                     alert("로그인 성공");
 
                     document.getElementById("loginboxchild").innerHTML=`환영합니다.<br><br><button>log-out</button>`;
-                    con=document.getElementById("loginView");
-                    con.style.display='none';
+                    con = document.getElementById("loginView");
+                    con.style.display = 'none';
                 }
             };
 
