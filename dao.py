@@ -38,7 +38,7 @@ class QuestionDAO:
             cur = conn.cursor()
 
             try:
-                cur.execute("select qsid, grade, title, mname from q_table, member where q_table.memno=member.memno") 
+                cur.execute("select qsid, grade, title, mname from q_table, member where q_table.memno=member.memno order by qsid") 
                 rows = cur.fetchall()
 
                 v = []
@@ -91,15 +91,21 @@ class QuestionDAO:
         return data
 
 
-    def questinsert(self, dto):
+    def questinsert(self, dto1, dto):
 
         conn = cx_Oracle.connect(user="MYMATH2", password="1234", dsn="xe")
         cur = conn.cursor()
 
         try:
-            cur.execute("insert into q_table values (:qsid, :grade, :title, :memno, :content)", \
-                empno=dto.getEmpno(), ename=dto.getEname(), sal=dto.getSal()) 
+            cur.execute("select memno from member where mid=:mid", mid=dto1.getMid())
+            row = cur.fetchone()
+            # print(row[0])
+            print("----- 제목", dto.getTitle())
+            print("----- 내용", dto.getContent())
+            cur.execute("insert into q_table values(seq_q_qsid.nextval, :memno, :title, :content, :grade)", \
+                memno=row[0], title=dto.getTitle(), content=dto.getContent(), grade=dto.getGrade())
             conn.commit()
+
         except Exception as e:
             print(e) 
 
@@ -107,10 +113,7 @@ class QuestionDAO:
             cur.close() 
             conn.close()
 
-
-
-
 # if __name__ == "__main__":
-#     dao = MemberDAO()
-#     dao.memid()
+#     dao = QuestionDAO()
+#     dao.questinsert()
 
