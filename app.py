@@ -16,6 +16,10 @@ jwt = JWTManager(app)
 def index():
     return render_template("index.html")
 
+@app.route("/booksurvey")
+def survey():
+    return render_template("booksurvey.html")
+
 @app.route("/login", methods=["POST"])
 def login_proc():
     user_id = request.form.get("user_id")
