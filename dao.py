@@ -100,14 +100,14 @@ class QuestionDAO:
             cur.execute("select memno from member where mid=:mid", mid=dto1.getMid())
             row = cur.fetchone()
             # print(row[0])
-            print("----- 제목", dto.getTitle())
-            print("----- 내용", dto.getContent())
+            # print("----- 제목", dto.getTitle())
+            # print("----- 내용", dto.getContent())
             cur.execute("insert into q_table values(seq_q_qsid.nextval, :memno, :title, :content, :grade)", \
                 memno=row[0], title=dto.getTitle(), content=dto.getContent(), grade=dto.getGrade())
             conn.commit()
 
         except Exception as e:
-            print(e) 
+            print(e)
 
         finally:
             cur.close() 
