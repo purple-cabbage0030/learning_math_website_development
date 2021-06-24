@@ -4,93 +4,126 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Kirang+Haerang&family=Yeon+Sung&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
-    <style>
-        @import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
-        h1 {
-            font-size: 50px;
-            text-align: center;
-            margin-top: 3%;
-            font-family: 'Poor story', cursive;
-        }
-        div{
-            font-family: 'Poor story', cursive;
-        }
-        .loginbox{
-            margin-right : 5px;
-            margin-left : 20px;
-            padding-right: 30px;
-            font-family: 'Poor story', cursive;
-        }
-        .button{
-            font-family: 'Poor story', cursive;
-        }
-        .col-50 {
-        float: left;
-        width: 50%;
-        margin-top: 6px;
-        height: 100%;
-        }
-    </style>
+    <title>문제집이 뭐가 조태익?</title>
+    
+    <link rel="stylesheet" href="../static/css/index.css">
+
 </head>
+
 <body style="font-family:'KoPub Batang', serif;">
-    <table align="center" cellpadding = "0" cellsapcing="0" width= "100%">
-        <tbody>
-            <tr>
-                <td>
-                    <h1>문제집이 뭐가 조태익?</h1>
-                </td>
-                <td class="loginbox">
+    <header>
+        <table align="center" cellpadding="0" cellsapcing="0" width= "100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>문제집이 뭐가 조태익?</h1>
+                    </td>
+                    <td class="loginbox">
+                        <!--6/23 추가-->
+                        <div id="loginView" style="display:block;">
+                            서비스 이용은 로그인 후 가능합니다.<br><br>
+                            
+                            <label>ID :&nbsp;&nbsp;</label>&nbsp;
+                            <input type="text" id="user_id" name="user_id"><br>
+                    
+                            <label>PW :</label>&nbsp;
+                            <input type="password" id="user_pw" name="user_pw"><br><br>
+                    
+                            <button class="button" onclick="login2()">log-in</button>
+                        </div>
+    
+                        <span id="loginboxchild"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+    
+    <nav>
+        <table class=nav >
+            <a href="booksurvey" style="text-decoration: none; color: white;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <tr>나에게 맞는 문제집 찾기</tr></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+            <a href="qlist" style="text-decoration: none; color: white;">
+                <tr>수학 질문 게시판</tr></a>
+        </table>
+    </nav>
+    <div class="underline"></div>
 
-                    <div id="loginView" style="display:block;">
-                        서비스 이용은 로그인 후 가능합니다.<br><br>
-                        
-                        <label>ID:</label>&nbsp;
-                        <input type="text" id="user_id" name="user_id"><br>
-                
-                        <label>PW:</label>&nbsp;
-                        <input type="password" id="user_pw" name="user_pw"><br><br>
-                
-                        <button class="button" onclick="login2()">log-in</button>
+    <!-- 추천 문제집 구현 영역-->
+    <div class="section">
+        <div class="body_left">
+            <div class="content_center" >
+                <div class="recom_bok">
+                    <p> 이번주 추천 문제집 </p>
+                </div>
+                <div style="overflow: hidden;"> 
+                    <div class="container">
+                        <div class="inner">
+                            <img src="../images/블랙라벨수학상.jpg">
+                        </div>
+                        <div class="inner">
+                            <img src="../images/쎈고등수학_상.jpg">
+                        </div>
+                        <div class="inner">
+                            <img src="../images/자이스토리고3수1.jpg">
+                        </div>
                     </div>
-
-                    <span id="loginboxchild"></span>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <hr color="grey"><br>
-
-    <div>
-        <div class="col-50">
-            <input type="button" id = "brbutton" value="책 추천" onclick="acyncMovePage('/templates/bookRecommend.html')">
+                </div>
+                <div class="btnclass">
+                    <button class="btn1">1</button>
+                    <button class="btn2">2</button> 
+                    <button class="btn3">3</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <a href="qlist">질문 게시판</a>
+
+        <!-- 질문 게시글 조회 구현-->
+        <div class="body_right">
+            <iframe src="qlist" frameborder="0" style="height: 500px; width: 100%;" ></iframe>
         </div>
     </div>
+    <br>
+
+    <!-- <div>
+        <div class="col-50">
+            <input type="button" id="brbutton" value="책 추천" onclick="acyncMovePage('/templates/bookRecommend.html')">
+        </div>
+        <div class="col-50">
+        </div>
+    </div> -->
 
     <script>
-        function login2(){
-            const xhttp = new XMLHttpRequest();
+        /*책 추천 슬라이드 버튼 구현*/
+        document.querySelector('.btn1').addEventListener('click', function(){
+            document.querySelector('.container').style.transform='translate(0vw)';
+        });
+        document.querySelector('.btn2').addEventListener('click', function(){
+            document.querySelector('.container').style.transform='translate(-100vw)';
+        });
+        document.querySelector('.btn3').addEventListener('click', function(){
+            document.querySelector('.container').style.transform='translate(-200vw)';
+        });
 
-            xhttp.onreadystatechange = function (){
+
+        //  6/23 추가
+        function login2(){
+            const xhttp=new XMLHttpRequest();
+
+            xhttp.onreadystatechange=function (){
 
                 if (this.readyState == 4 && this.status == 200){
                     console.log("=======");
 
-                    all = JSON.parse(this.responseText);
+                    all=JSON.parse(this.responseText);
                     console.log(all.access_token);
                     localStorage.setItem("jwt-auth-token", all.access_token);
                     alert("로그인 성공");
 
                     document.getElementById("loginboxchild").innerHTML=`환영합니다.<br><br><button>log-out</button>`;
-                    con = document.getElementById("loginView");
-                    con.style.display = 'none';
+                    con=document.getElementById("loginView");
+                    con.style.display='none';
                 }
             };
 
@@ -98,9 +131,6 @@
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("user_id="+document.getElementById("user_id").value+"&user_pw="+document.getElementById("user_pw").value);
         }
-
-
-        
     </script>
     
 </body>
