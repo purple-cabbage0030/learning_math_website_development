@@ -24,7 +24,7 @@
 
 <body>
     <header>
-        <span class="home_icon">
+        <span class="home_icon" style="cursor: pointer;">
             <i class="fas fa-home" style="font-size:200%; margin: 1%; color:white" onclick="location.href='/'"></i>
         </span>
     </header>
@@ -185,8 +185,8 @@
             <label for="review">② 복습용</label><br>
         </div>
         <div id="sub_btn" style="position: relative; margin-left: auto; margin-right: auto; width: 35px; margin-bottom: 50px; margin-top: 10px; ">
-            <input type="button" value="제출" onclick="pick_options(this.form)">
-            <input type = "button" value="확인" class="relative" onclick="select_book()">
+            <input type="button" value="제출" onclick="pick_options(this.form)"><p>
+            <input type = "button" value="결과 확인" class="relative" onclick="select_book()">
         </div>
         </div>
     </form>
@@ -278,62 +278,62 @@
                 if (exam == "수능용"){
                     if (m_grade == "상"){
                         alert("EBS 전지적 출제자 시점은 어떤가요?");
-                        new_src='http://image.kyobobook.co.kr/images/book/large/576/l9788954754576.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/620/x9788954754620.jpg'
                     }
                     else if (m_grade == "중"){
                         alert("EBS 올림포스는 어떤가요?")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/761/l9788954743761.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/761/x9788954743761.jpg'
                     }
                     else {
                         alert("EBS 수학의 왕도로 시작해보아요!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/501/l9788954743501.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/501/x9788954743501.jpg'
                     }
                 }
                 else {
                     if (m_grade == "상"){
                         if (b_publisher == "비상"){
                             alert("만렙 PM은 어떨까요?")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/275/l9791164744275.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/275/x9791164744275.jpg'
                         }
                         else if (b_publisher == "디딤돌"){
                             alert("씨리얼은 어떨까요?")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/703/l9788926153703.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/703/x9788926153703.jpg'
                         }
                         else {
                             alert("일품은 어때요?")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/393/l9788928330393.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/393/x9788928330393.jpg'
                         }
                     }
                     else if (m_grade == "중"){
                         if (b_publisher == "천재"){
                             alert("유형 해결의 법칙이 좋을 것 같아요!")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/940/l9791125935940.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/940/x9791125935940.jpg'
                         }
                         else if (b_publisher == "신사고"){
                             alert("개념쎈을 풀어볼까요?")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/027/l9788928330027.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/027/x9788928330027.jpg'
                         }
                         else if (b_publisher == "비상"){
                             alert("만렙 AM으로 기초부터 심화까지")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/395/l9791162273395.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/395/x9791162273395.jpg'
                         }
                         else {
                             alert("내공의 힘으로 상위권으로!")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/937/l9791162273937.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/937/x9791162273937.jpg'
                         }
                     }
                     else {
                         if (b_publisher == "천재"){
                             alert("개념 해결의 법칙이 좋을 것 같아요!")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/094/l9791125948094.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/094/x9791125948094.jpg'
                         }
                         else if (b_publisher == "신사고"){
                             alert("개념쎈을 풀어볼까요?")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/027/l9788928330027.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/027/x9788928330027.jpg'
                         }
                         else {
                             alert("내공의 힘으로 기초부터 탄탄히!")
-                            new_src='http://image.kyobobook.co.kr/images/book/large/937/l9791162273937.jpg'
+                            new_src='http://image.kyobobook.co.kr/images/book/xlarge/937/x9791162273937.jpg'
                         }
                     }
                 }
@@ -342,43 +342,43 @@
                 if (m_grade == "상"){
                     if (b_publisher == "신사고") {
                         alert("일품 수학으로 만점 도전!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/362/l9788928330362.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/362/x9788928330362.jpg'
                     }
                     else if (b_publisher == "디딤돌") {
                         alert("최상위 수학으로 만점 도전!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/985/l9788926157985.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/985/x9788926157985.jpg'
                     }
                     else {
                         alert("투탑으로 최상위권을 향해!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/017/l9788926153017.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/017/x9788926153017.jpg'
                     }
                 }
                 else if (m_grade == '중'){
                     if (b_publisher=="비상") { 
                         alert("개념+유형으로 상위권에 도전!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/568/l9791166091568.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/568/x9791166091568.jpg'
                     }
                     else if (b_publisher == "천재") {
                         alert("체크체크로 꼼꼼하게!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/622/l9791125950622.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/622/x9791125950622.jpg'
                     }
                     else {
                         alert("쎈으로 유형별 문제 쎄게 잡고가기!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/361/l9788928324361.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/361/x9788928324361.jpg'
                     }
                 }
                 else {
                     if (b_publisher == "천재") {
                         alert("체크체크로 꼼꼼하게!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/427/l9791125946427.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/427/x9791125946427.jpg'
                     }
                     else if (b_publisher == "비상") {
                         alert("교과서 개념잡기로 꽉 잡고 가기!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/053/l9791162272053.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/053/x9791162272053.jpg'
                     }
                     else {
                         alert("우공비로 공부 비법을 잡아요!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/864/l9788928331864.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/864/x9788928331864.jpg'
                     }
                 }
             }
@@ -386,29 +386,29 @@
                 if (m_grade == '상'){
                     if (b_publisher == "디딤돌" || b_publisher == "신사고"){
                         alert("수학 좀 한다면? 수학 좀 한다면!으로 확실하게")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/260/l9788926153260.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/883/x9788926158883.jpg'
                     }
                     else {
                         alert("일등 수학으로 누구보다 빠르게!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/914/l9791125943914.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/914/x9791125943914.jpg'
                     }
                 }
                 else {
                     if (b_publisher == "디딤돌"){
                         alert("기본+응용으로 꽉 잡기!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/453/l9788926159453.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/453/x9788926159453.jpg'
                     }
                     else if (b_publisher == "신사고"){
                         alert("쎈으로 완벽하게!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/560/l9788928327560.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/560/x9788928327560.jpg'
                     }
                     else if (b_publisher == "천재"){
                         alert("해법수학으로 수학의 해법 찾기!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/898/l9791125960898.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/898/x9791125960898.jpg'
                     }
                     else {
                         alert("개념+유형으로 두마리 토끼를!")
-                        new_src='http://image.kyobobook.co.kr/images/book/large/141/l9791166090141.jpg'
+                        new_src='http://image.kyobobook.co.kr/images/book/xlarge/141/x9791166090141.jpg'
                     }
                 }
             }
